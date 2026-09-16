@@ -72,7 +72,7 @@ agenda_contatos/
 
 ```bash
 # 1. Clone o repositório
-git clone https://github.com/guicobracraf-prog/AgendaDeContatos.git
+git clone https://github.com/guicobracraft-prog/AgendaDeContatos.git
 cd agenda_contatos
 
 # 2. Crie um ambiente virtual
