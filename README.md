@@ -24,9 +24,9 @@ Uma aplicação web simples e moderna para gerenciar contatos, construída com *
 
 > 💡 **Dica:** rode o projeto e tire um print da tela para colocar aqui!
 >
-> ```markdown
-> ![Preview da Agenda](screenshot.png)
-> ```
+> 
+> ![Preview da Agenda](screenshots/preview.png)
+> 
 
 ---
 
