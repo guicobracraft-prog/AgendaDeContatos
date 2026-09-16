@@ -1,0 +1,265 @@
+/* =========================================================
+   style.css - Tema escuro moderno para a Agenda de Contatos
+   ========================================================= */
+
+/* Reset básico */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Variáveis de cor (facilita trocar o tema depois) */
+:root {
+    --bg:            #0f1115;   /* fundo geral */
+    --bg-card:       #1a1d24;   /* fundo dos cards */
+    --bg-input:      #232830;   /* fundo dos inputs */
+    --borda:         #2d323c;
+    --texto:         #e6e8ee;
+    --texto-suave:   #98a0b3;
+    --primaria:      #4f8cff;
+    --primaria-hover:#3a76e6;
+    --perigo:        #ef4444;
+    --perigo-hover:  #c53030;
+    --sucesso:       #22c55e;
+    --sombra:        0 4px 20px rgba(0, 0, 0, 0.4);
+}
+
+/* Fonte e fundo geral */
+body {
+    font-family: 'Segoe UI', 'Inter', system-ui, -apple-system, sans-serif;
+    background: linear-gradient(180deg, #0b0d12 0%, #131722 100%);
+    color: var(--texto);
+    min-height: 100vh;
+    padding: 40px 20px;
+    line-height: 1.6;
+}
+
+/* Container central */
+.container {
+    max-width: 900px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+/* Cabeçalho */
+.header {
+    text-align: center;
+    margin-bottom: 8px;
+}
+
+.header h1 {
+    font-size: 2rem;
+    font-weight: 700;
+    background: linear-gradient(90deg, #4f8cff, #a855f7);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.subtitle {
+    color: var(--texto-suave);
+    font-size: 0.95rem;
+    margin-top: 4px;
+}
+
+/* Cards */
+.card {
+    background: var(--bg-card);
+    border: 1px solid var(--borda);
+    border-radius: 14px;
+    padding: 24px;
+    box-shadow: var(--sombra);
+}
+
+.card h2 {
+    font-size: 1.15rem;
+    margin-bottom: 16px;
+    color: var(--texto);
+    font-weight: 600;
+}
+
+/* Formulário */
+.form-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+}
+
+.campo {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+/* O e-mail ocupa as duas colunas */
+.campo:nth-child(3) {
+    grid-column: 1 / -1;
+}
+
+label {
+    font-size: 0.85rem;
+    color: var(--texto-suave);
+    font-weight: 500;
+}
+
+input {
+    background: var(--bg-input);
+    border: 1px solid var(--borda);
+    border-radius: 10px;
+    padding: 12px 14px;
+    color: var(--texto);
+    font-size: 0.95rem;
+    transition: all 0.2s ease;
+    outline: none;
+}
+
+input::placeholder {
+    color: #555c6b;
+}
+
+input:focus {
+    border-color: var(--primaria);
+    box-shadow: 0 0 0 3px rgba(79, 140, 255, 0.15);
+}
+
+/* Botões */
+.btn {
+    cursor: pointer;
+    border: none;
+    border-radius: 10px;
+    padding: 12px 20px;
+    font-size: 0.95rem;
+    font-weight: 600;
+    transition: all 0.2s ease;
+    font-family: inherit;
+}
+
+.btn-primario {
+    grid-column: 1 / -1;
+    background: var(--primaria);
+    color: #fff;
+}
+
+.btn-primario:hover {
+    background: var(--primaria-hover);
+    transform: translateY(-1px);
+}
+
+.btn-perigo {
+    background: transparent;
+    color: var(--perigo);
+    border: 1px solid var(--perigo);
+    padding: 8px 14px;
+    font-size: 0.85rem;
+}
+
+.btn-perigo:hover {
+    background: var(--perigo);
+    color: #fff;
+}
+
+/* Lista de contatos */
+.lista-contatos {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.contato-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    background: var(--bg-input);
+    border: 1px solid var(--borda);
+    border-radius: 10px;
+    padding: 14px 18px;
+    transition: all 0.2s ease;
+}
+
+.contato-item:hover {
+    border-color: var(--primaria);
+    transform: translateX(4px);
+}
+
+.info {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    min-width: 0;
+}
+
+.nome {
+    font-weight: 600;
+    font-size: 1rem;
+    color: var(--texto);
+}
+
+.detalhe {
+    font-size: 0.85rem;
+    color: var(--texto-suave);
+    word-break: break-word;
+}
+
+/* Estado vazio */
+.vazio {
+    text-align: center;
+    color: var(--texto-suave);
+    padding: 20px;
+    font-style: italic;
+}
+
+/* Alertas (flash messages) */
+.mensagens {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.alerta {
+    padding: 12px 16px;
+    border-radius: 10px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    border: 1px solid transparent;
+}
+
+.alerta.sucesso {
+    background: rgba(34, 197, 94, 0.12);
+    color: var(--sucesso);
+    border-color: rgba(34, 197, 94, 0.3);
+}
+
+.alerta.erro {
+    background: rgba(239, 68, 68, 0.12);
+    color: var(--perigo);
+    border-color: rgba(239, 68, 68, 0.3);
+}
+
+/* Responsividade */
+@media (max-width: 640px) {
+    body { padding: 20px 14px; }
+
+    .header h1 { font-size: 1.5rem; }
+
+    .form-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .contato-item {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .contato-item form {
+        width: 100%;
+    }
+
+    .btn-perigo {
+        width: 100%;
+    }
+}

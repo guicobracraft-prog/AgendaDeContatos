@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>📇 Agenda de Contatos</title>
+    <!-- Link para o arquivo CSS (Flask entende 'static' automaticamente) -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}" />
+</head>
+<body>
+
+    <main class="container">
+        <!-- Cabeçalho -->
+        <header class="header">
+            <h1>📇 Agenda de Contatos</h1>
+            <p class="subtitle">Gerencie seus contatos de forma simples e rápida</p>
+        </header>
+
+        <!-- Mensagens de feedback (sucesso / erro) -->
+        {% with mensagens = get_flashed_messages(with_categories=true) %}
+            {% if mensagens %}
+                <div class="mensagens">
+                    {% for categoria, msg in mensagens %}
+                        <div class="alerta {{ categoria }}">{{ msg }}</div>
+                    {% endfor %}
+                </div>
+            {% endif %}
+        {% endwith %}
+
+        <!-- Formulário de cadastro -->
+        <section class="card formulario">
+            <h2>Adicionar Novo Contato</h2>
+            <form action="{{ url_for('adicionar') }}" method="POST" class="form-grid">
+                <div class="campo">
+                    <label for="nome">Nome</label>
+                    <input type="text" id="nome" name="nome" placeholder="Ex: João da Silva" required />
+                </div>
+
+                <div class="campo">
+                    <label for="telefone">Telefone</label>
+                    <input type="text" id="telefone" name="telefone" placeholder="Ex: (11) 99999-9999" required />
+                </div>
+
+                <div class="campo">
+                    <label for="email">E-mail</label>
+                    <input type="email" id="email" name="email" placeholder="Ex: joao@email.com" required />
+                </div>
+
+                <button type="submit" class="btn btn-primario">➕ Adicionar Contato</button>
+            </form>
+        </section>
+
+        <!-- Lista de contatos -->
+        <section class="card lista">
+            <h2>Contatos Cadastrados ({{ contatos|length }})</h2>
+
+            {% if contatos %}
+                <ul class="lista-contatos">
+                    {% for contato in contatos %}
+                        <li class="contato-item">
+                            <div class="info">
+                                <span class="nome">{{ contato.nome }}</span>
+                                <span class="detalhe">📞 {{ contato.telefone }}</span>
+                                <span class="detalhe">✉️ {{ contato.email }}</span>
+                            </div>
+
+                            <!-- Botão para excluir (usa POST para segurança) -->
+                            <form action="{{ url_for('excluir', contato_id=contato.id) }}" method="POST"
+                                  onsubmit="return confirm('Deseja realmente excluir {{ contato.nome }}?');">
+                                <button type="submit" class="btn btn-perigo">🗑️ Excluir</button>
+                            </form>
+                        </li>
+                    {% endfor %}
+                </ul>
+            {% else %}
+                <p class="vazio">Nenhum contato cadastrado ainda. Adicione o primeiro! 🚀</p>
+            {% endif %}
+        </section>
+    </main>
+
+</body>
+</html>

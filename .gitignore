@@ -1,0 +1,73 @@
+# =========================================================
+# .gitignore - Arquivos que o Git deve IGNORAR
+# =========================================================
+
+# ---------- Python ----------
+# Bytecode compilado (gerado automaticamente pelo Python)
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Distribuições / builds
+build/
+dist/
+*.egg-info/
+.eggs/
+
+# ---------- Ambiente Virtual ----------
+# Pastas de venv (NUNCA devem ir para o Git)
+venv/
+.venv/
+env/
+ENV/
+.venv*/
+
+# ---------- Flask ----------
+# Arquivos de instância (configs locais, segredos, etc.)
+instance/
+.webassets-cache
+
+# ---------- Variáveis de ambiente ----------
+# Contém senhas, chaves secretas, tokens — NUNCA subir
+.env
+.env.*
+!.env.example
+
+# ---------- IDEs e Editores ----------
+# VS Code
+.vscode/
+
+# PyCharm / IntelliJ
+.idea/
+
+# Sublime Text
+*.sublime-project
+*.sublime-workspace
+
+# Vim
+*.swp
+*.swo
+
+# ---------- Sistema Operacional ----------
+# macOS
+.DS_Store
+
+# Windows
+Thumbs.db
+desktop.ini
+
+# Linux
+*~
+
+# ---------- Logs e cache ----------
+*.log
+.pytest_cache/
+.mypy_cache/
+.coverage
+htmlcov/
+
+# ---------- Nosso projeto ----------
+# ATENÇÃO: se você quer versionar os contatos de exemplo,
+# NÃO ignore o contatos.json.
+# Se preferir que cada dev tenha o dele, descomente a linha abaixo:
+# contatos.json
