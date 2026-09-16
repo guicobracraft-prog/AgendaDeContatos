@@ -22,7 +22,7 @@ Uma aplicação web simples e moderna para gerenciar contatos, construída com *
 
 ## 🖼️ Preview
 
-> 💡 **Dica:** rode o projeto e tire um print da tela para colocar aqui!
+> 
 >
 > 
 > ![Preview da Agenda](screenshots/preview.png)
